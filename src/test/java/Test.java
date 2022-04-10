@@ -1,11 +1,11 @@
-import AccesoDatos.Conector;
+import DataBaseConnectionDB.ConnectionDB;
 
 import java.sql.SQLException;
 
 public class Test {
     @org.junit.jupiter.api.Test
     public void conexion() throws SQLException, ClassNotFoundException {
-        Conector conector= new Conector();
+        ConnectionDB conector= new ConnectionDB();
         conector.conectar();
         conector.desconectar();
     }

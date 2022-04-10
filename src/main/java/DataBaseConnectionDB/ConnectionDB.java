@@ -1,4 +1,4 @@
-package AccesoDatos;
+package DataBaseConnectionDB;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -8,10 +8,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class Conector {
+public class ConnectionDB {
     protected Connection conexion = null;
 
-    public Conector() {
+    public ConnectionDB() {
 
     }
 
