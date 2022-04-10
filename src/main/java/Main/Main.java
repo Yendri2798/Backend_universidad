@@ -52,13 +52,14 @@ public class Main {
            Date date1 = new SimpleDateFormat("yyyy/MM/dd").parse(fecha1);
            a.setFechaNacimiento(date1);
            a.setCarrera(c);
+           sa.insertarAlumno(a);
            //sa.modificaAlumno(a);
 
            //for (Alumno pr : sa.listarAlumno()) {
           //System.out.println(pr.toString());
             //}
            //System.out.println(sa.buscarAlumno("702610004").toString());
-           sa.eliminarAlumno("702610004");
+           //sa.eliminarAlumno("702610004");
 
     } catch (GlobalException | NoDataException ex) {
         Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
