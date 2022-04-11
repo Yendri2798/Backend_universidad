@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Test" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-04-09T23:28:38" hostname="LAPTOP-HBDHCDCT" time="1.079">
-  <properties/>
-  <testcase name="conexion()" classname="Test" time="1.079"/>
-  <system-out><![CDATA[Me conectÃ©
-Me desconectÃ©
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
