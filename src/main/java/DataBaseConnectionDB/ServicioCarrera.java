@@ -14,12 +14,12 @@ import java.util.List;
 
 public class ServicioCarrera extends ConnectionDB{
 
-    private static final String INSERTAR_CARRERA = "{call insertaCarrera(?,?,?)}";
-    private static final String MODIFICAR_CARRERA = "{call modificaCarrera(?,?,?)}";
+    private final String INSERTAR_CARRERA = "{call insertaCarrera(?,?,?)}";
+    private final String MODIFICAR_CARRERA = "{call modificaCarrera(?,?,?)}";
 
-    private static final String CONSULTAR_CARRERA = "{?=call buscarCarrera(?)}";
-    private static final String LISTAR_CARRERA = "{?=call listarCarrera()}";
-    private static final String ELIMINAR_CARRERA = "{call eliminaCarrera(?)}";
+    private final String CONSULTAR_CARRERA = "{?=call buscarCarrera(?)}";
+    private final String LISTAR_CARRERA = "{?=call listarCarrera()}";
+    private final String ELIMINAR_CARRERA = "{call eliminaCarrera(?)}";
 
     public ServicioCarrera(){
 
