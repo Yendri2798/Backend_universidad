@@ -7,13 +7,12 @@ import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class ServicioLogin extends Servicio {
+public class ServicioLogin extends ConnectionDB {
 
     private static final String obtenerLogin = "{?=call obtenerLogin(?)}";
 
-
-   
     public Login obtenerLogin(String id) throws GlobalException, NoDataException {
+
 
         try {
             conectar();
@@ -23,7 +22,7 @@ public class ServicioLogin extends Servicio {
             throw new NoDataException("La base de datos no se encuentra disponible");
         }
         ResultSet rs = null;
-        
+
         Login ptrLogin = null;
         CallableStatement pstmt = null;
         try {
@@ -36,9 +35,9 @@ public class ServicioLogin extends Servicio {
                 ptrLogin = new Login(rs.getString("cedula"),
                         rs.getString("contraseña"),
                         rs.getString("rol"));
-              
+
             }
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
 
@@ -64,7 +63,7 @@ public class ServicioLogin extends Servicio {
 
     public boolean verificarLogin(String id, String pwd) throws NoDataException, GlobalException {
         Login ptr = this.obtenerLogin(id);
-        return ptr.getCedula() ==id && ptr.getContrasena() == pwd;
+        return ptr.getCedula() == id && ptr.getContrasena() == pwd;
     }
 
     public String obtenerRolLogin(String id) throws NoDataException, GlobalException {

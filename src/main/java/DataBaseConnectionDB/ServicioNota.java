@@ -1,4 +1,4 @@
 package DataBaseConnectionDB;
 
-public class ServicioNota extends ConnectionDB{
+public class ServicioNota extends ConnectionDB {
 }

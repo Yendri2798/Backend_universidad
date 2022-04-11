@@ -1,6 +1,5 @@
 package DataBaseConnectionDB;
 
-import LogicaNegocio.Ciclo;
 import LogicaNegocio.Profesor;
 import oracle.jdbc.OracleTypes;
 
@@ -8,7 +7,6 @@ import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 

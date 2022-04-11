@@ -2,7 +2,6 @@ package DataBaseConnectionDB;
 
 import LogicaNegocio.Alumno;
 import LogicaNegocio.Carrera;
-import LogicaNegocio.Ciclo;
 import oracle.jdbc.OracleTypes;
 
 import java.sql.CallableStatement;
@@ -26,8 +25,7 @@ public class ServicioAlumno extends ConnectionDB {
     public ServicioAlumno() {
     }
 
-    public void insertarAlumno(Alumno alumno) throws GlobalException, NoDataException
-    {
+    public void insertarAlumno(Alumno alumno) throws GlobalException, NoDataException {
         try {
             conectar();
         } catch (ClassNotFoundException e) {
@@ -40,24 +38,23 @@ public class ServicioAlumno extends ConnectionDB {
         try {
 
             pstmt = conexion.prepareCall(INSERTAR_ALUMNO);
-            pstmt.setString(1,alumno.getCedulaAlumno());
-            pstmt.setString(2,alumno.getNombre());
-            pstmt.setString(3,alumno.getPrimer_apellido());
-            pstmt.setInt(4,alumno.getTelefono());
-            pstmt.setString(5,alumno.getEmail());
-            pstmt.setDate(6,parse(alumno.getFechaNacimiento()));
-            pstmt.setString(7,alumno.getCarrera().getCodigo_Carrera());
+            pstmt.setString(1, alumno.getCedulaAlumno());
+            pstmt.setString(2, alumno.getNombre());
+            pstmt.setString(3, alumno.getPrimer_apellido());
+            pstmt.setInt(4, alumno.getTelefono());
+            pstmt.setString(5, alumno.getEmail());
+            pstmt.setDate(6, parse(alumno.getFechaNacimiento()));
+            pstmt.setString(7, alumno.getCarrera().getCodigo_Carrera());
 
             boolean result = pstmt.execute();
             if (result == true) {
-                throw new NoDataException ("No se insertó");
+                throw new NoDataException("No se insertó");
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
             throw new GlobalException("Llave duplicada");
-        }
-        finally {
+        } finally {
             try {
                 if (pstmt != null) {
                     pstmt.close();
@@ -69,7 +66,7 @@ public class ServicioAlumno extends ConnectionDB {
         }
     }
 
-    public void modificaAlumno(Alumno alumno) throws GlobalException, NoDataException  {
+    public void modificaAlumno(Alumno alumno) throws GlobalException, NoDataException {
         try {
             conectar();
         } catch (ClassNotFoundException e) {
@@ -81,18 +78,18 @@ public class ServicioAlumno extends ConnectionDB {
         try {
 
             pstmt = conexion.prepareStatement(MODIFICAR_ALUMNO);
-            pstmt.setString(1,alumno.getCedulaAlumno());
-            pstmt.setString(2,alumno.getNombre());
-            pstmt.setString(3,alumno.getPrimer_apellido());
-            pstmt.setInt(4,alumno.getTelefono());
-            pstmt.setString(5,alumno.getEmail());
-            pstmt.setDate(6,parse(alumno.getFechaNacimiento()));
-            pstmt.setString(7,alumno.getCarrera().getCodigo_Carrera());
+            pstmt.setString(1, alumno.getCedulaAlumno());
+            pstmt.setString(2, alumno.getNombre());
+            pstmt.setString(3, alumno.getPrimer_apellido());
+            pstmt.setInt(4, alumno.getTelefono());
+            pstmt.setString(5, alumno.getEmail());
+            pstmt.setDate(6, parse(alumno.getFechaNacimiento()));
+            pstmt.setString(7, alumno.getCarrera().getCodigo_Carrera());
 
             int result = pstmt.executeUpdate();
 
             if (result == 0) {
-                throw new NoDataException ("No se modificó");
+                throw new NoDataException("No se modificó");
             }
 
         } catch (SQLException e) {
@@ -112,9 +109,9 @@ public class ServicioAlumno extends ConnectionDB {
     public Alumno buscarAlumno(String id) throws GlobalException, NoDataException {
         try {
             conectar();
-        }catch (ClassNotFoundException ex){
+        } catch (ClassNotFoundException ex) {
             throw new GlobalException("Driver no escontrado");
-        }catch (SQLException ex){
+        } catch (SQLException ex) {
             throw new NoDataException("No se encuentra la base de datos");
         }
         ResultSet rs = null;
@@ -122,14 +119,14 @@ public class ServicioAlumno extends ConnectionDB {
         Carrera carrera = new Carrera();
         ServicioCarrera service = new ServicioCarrera();
 
-        CallableStatement pstmt= null;
+        CallableStatement pstmt = null;
         try {
 
             pstmt = conexion.prepareCall(CONSULTAR_ALUMNO);
             pstmt.registerOutParameter(1, OracleTypes.CURSOR);
-            pstmt.setString(2,id);
+            pstmt.setString(2, id);
             pstmt.execute();
-            rs = (ResultSet)pstmt.getObject(1);
+            rs = (ResultSet) pstmt.getObject(1);
             while (rs.next()) {
 
                 carrera = service.buscarCarrera(rs.getString("carrera_codigo"));
@@ -143,22 +140,18 @@ public class ServicioAlumno extends ConnectionDB {
                         carrera
                 );
             }
-        }
-        catch (SQLException /*| ParseException*/ ex) {
+        } catch (SQLException /*| ParseException*/ ex) {
             throw new GlobalException("Sentencia no valida");
-        }
-        finally {
+        } finally {
             try {
-                if (rs!=null) {
+                if (rs != null) {
                     rs.close();
                 }
                 if (pstmt != null) {
                     pstmt.close();
                 }
                 desconectar();
-            }
-            catch(SQLException e)
-            {
+            } catch (SQLException e) {
                 throw new GlobalException("Estatutos invalidos o nulos");
             }
         }
@@ -169,9 +162,9 @@ public class ServicioAlumno extends ConnectionDB {
     public List<Alumno> listarAlumno() throws GlobalException, NoDataException {
         try {
             conectar();
-        }catch (ClassNotFoundException ex){
+        } catch (ClassNotFoundException ex) {
             throw new GlobalException("Driver no escontrado");
-        }catch (SQLException ex){
+        } catch (SQLException ex) {
             throw new NoDataException("No se encuentra la base de datos");
         }
         ResultSet rs = null;
@@ -180,12 +173,12 @@ public class ServicioAlumno extends ConnectionDB {
         Carrera carrera = new Carrera();
         ServicioCarrera servicioCarrera = new ServicioCarrera();
 
-        CallableStatement pstmt= null;
+        CallableStatement pstmt = null;
         try {
             pstmt = conexion.prepareCall(LISTAR_ALUMNO);
             pstmt.registerOutParameter(1, OracleTypes.CURSOR);
             pstmt.execute();
-            rs = (ResultSet)pstmt.getObject(1);
+            rs = (ResultSet) pstmt.getObject(1);
             while (rs.next()) {
 
                 carrera = servicioCarrera.buscarCarrera(rs.getString("carrera_codigo"));
@@ -198,34 +191,29 @@ public class ServicioAlumno extends ConnectionDB {
                         carrera
                 ));
             }
-        }
-        catch (SQLException /*| ParseException*/ ex) {
+        } catch (SQLException /*| ParseException*/ ex) {
             throw new GlobalException("Sentencia no valida");
-        }
-        finally {
+        } finally {
             try {
-                if (rs!=null) {
+                if (rs != null) {
                     rs.close();
                 }
                 if (pstmt != null) {
                     pstmt.close();
                 }
                 desconectar();
-            }
-            catch(SQLException e)
-            {
+            } catch (SQLException e) {
                 throw new GlobalException("Estatutos invalidos o nulos");
             }
         }
 
-        if (alumnos == null || alumnos.size()==0) {
+        if (alumnos == null || alumnos.size() == 0) {
             throw new NoDataException("No hay datos relacionados con el Comprobante de pago");
         }
         return alumnos;
     }
 
-    public void eliminarAlumno(String id) throws GlobalException, NoDataException
-    {
+    public void eliminarAlumno(String id) throws GlobalException, NoDataException {
         try {
             conectar();
         } catch (ClassNotFoundException e) {
@@ -236,14 +224,12 @@ public class ServicioAlumno extends ConnectionDB {
         PreparedStatement pstmt = null;
         try {
             pstmt = conexion.prepareStatement(ELIMINAR_ALUMNO);
-            pstmt.setString(1,id);
+            pstmt.setString(1, id);
             int resultado = pstmt.executeUpdate();
 
             if (resultado == 0) {
-                throw new NoDataException ("No se pudo eliminar el Comprobante de pago");
-            }
-            else
-            {
+                throw new NoDataException("No se pudo eliminar el Comprobante de pago");
+            } else {
                 System.out.println("Se ha eliminado exitosamente");
             }
         } catch (SQLException e) {

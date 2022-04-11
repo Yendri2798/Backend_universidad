@@ -15,12 +15,12 @@ import java.util.logging.Logger;
 public class CrearDatos {
 
 
-    public static void crearDatos(){
+    public static void crearDatos() {
         crearDatosAlumno();
     }
 
-    private static void crearDatosAlumno(){
-        try{
+    private static void crearDatosAlumno() {
+        try {
 
             Carrera c = new Carrera();
             c.setCodigo_Carrera("INGE200");

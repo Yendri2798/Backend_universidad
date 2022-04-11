@@ -6,18 +6,19 @@ import DataBaseConnectionDB.ServicioLogin;
 import LogicaNegocio.Login;
 
 public class LoginModel {
-    private LoginModel instancia = null;
-    private ServicioLogin servicio;
-    private LoginModel(){
-    servicio = new ServicioLogin();
+    private final LoginModel instancia = null;
+    private final ServicioLogin servicio;
+
+    private LoginModel() {
+        servicio = new ServicioLogin();
     }
 
-    public LoginModel obtenerInstancia(){
-        return instancia ==null? new LoginModel(): instancia;
+    public LoginModel obtenerInstancia() {
+        return instancia == null ? new LoginModel() : instancia;
     }
 
     public boolean verificarLogin(String id, String pwd) throws NoDataException, GlobalException {
-        return servicio.verificarLogin(id,pwd);
+        return servicio.verificarLogin(id, pwd);
     }
 
     public String obtenerRolLogin(String id) throws NoDataException, GlobalException {
