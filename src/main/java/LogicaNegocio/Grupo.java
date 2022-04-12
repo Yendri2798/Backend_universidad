@@ -1,12 +1,29 @@
 package LogicaNegocio;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class Grupo {
+    @Getter
+    @Setter
     private int numero_Grupo;
+    @Getter
+    @Setter
     private String horario;
+    @Getter
+    @Setter
     private Ciclo ciclo;
+    @Getter
+    @Setter
     private Curso curso;
+    @Getter
+    @Setter
     private Profesor profesor;
+    @Getter
+    @Setter
     private int campos_Restantes;
+    @Getter
+    @Setter
     private int capacidad_Maxima;
 
     public Grupo(int numero_Grupo, String horario, Ciclo ciclo, Curso curso, Profesor profesor, int campos_Restantes, int capacidad_Maxima) {
@@ -28,62 +45,6 @@ public class Grupo {
         this.campos_Restantes = 0;
         this.capacidad_Maxima = 0;
 
-    }
-
-    public int getNumero_Grupo() {
-        return numero_Grupo;
-    }
-
-    public void setNumero_Grupo(int numero_Grupo) {
-        this.numero_Grupo = numero_Grupo;
-    }
-
-    public String getHorario() {
-        return horario;
-    }
-
-    public void setHorario(String horario) {
-        this.horario = horario;
-    }
-
-    public int getCampos_Restantes() {
-        return campos_Restantes;
-    }
-
-    public void setCampos_Restantes(int campos_Restantes) {
-        this.campos_Restantes = campos_Restantes;
-    }
-
-    public int getCapacidad_Maxima() {
-        return capacidad_Maxima;
-    }
-
-    public void setCapacidad_Maxima(int capacidad_Maxima) {
-        this.capacidad_Maxima = capacidad_Maxima;
-    }
-
-    public Ciclo getCiclo() {
-        return ciclo;
-    }
-
-    public void setCiclo(Ciclo ciclo) {
-        this.ciclo = ciclo;
-    }
-
-    public Curso getCurso() {
-        return curso;
-    }
-
-    public void setCurso(Curso curso) {
-        this.curso = curso;
-    }
-
-    public Profesor getProfesor() {
-        return profesor;
-    }
-
-    public void setProfesor(Profesor profesor) {
-        this.profesor = profesor;
     }
 
     @Override

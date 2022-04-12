@@ -1,13 +1,24 @@
 package LogicaNegocio;
 
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Carrera {
+    @Getter
+    @Setter
     private String codigo_Carrera;
+    @Getter
+    @Setter
     private String nombre;
+    @Getter
+    @Setter
     private String titulo;
+    @Getter
+    @Setter
     private List<Curso> cursos;
 
     public Carrera(String codigo, String nombre, String titulo, List<Curso> cursos) {
@@ -22,38 +33,6 @@ public class Carrera {
         this.nombre = "";
         this.titulo = "";
         this.cursos = new ArrayList<>();
-    }
-
-    public String getCodigo_Carrera() {
-        return codigo_Carrera;
-    }
-
-    public void setCodigo_Carrera(String codigo_Carrera) {
-        this.codigo_Carrera = codigo_Carrera;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public List<Curso> getCursos() {
-        return cursos;
-    }
-
-    public void setCursos(List<Curso> cursos) {
-        this.cursos = cursos;
     }
 
     @Override

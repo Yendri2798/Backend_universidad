@@ -1,8 +1,17 @@
 package LogicaNegocio;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class Nota_alumno {
+    @Getter
+    @Setter
     private Alumno alumno;
+    @Getter
+    @Setter
     private String id_Curso;
+    @Getter
+    @Setter
     private int nota;
 
     public Nota_alumno(Alumno alumno, String id_Curso, int nota) {
@@ -15,30 +24,6 @@ public class Nota_alumno {
         this.alumno = new Alumno();
         this.id_Curso = "";
         this.nota = 0;
-    }
-
-    public Alumno getAlumno() {
-        return alumno;
-    }
-
-    public void setAlumno(Alumno alumno) {
-        this.alumno = alumno;
-    }
-
-    public String getId_Curso() {
-        return id_Curso;
-    }
-
-    public void setId_Curso(String id_Curso) {
-        this.id_Curso = id_Curso;
-    }
-
-    public int getNota() {
-        return nota;
-    }
-
-    public void setNota(int nota) {
-        this.nota = nota;
     }
 
     @Override

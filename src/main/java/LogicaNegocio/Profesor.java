@@ -1,14 +1,29 @@
 package LogicaNegocio;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Profesor {
+    @Getter
+    @Setter
     private String cedula_Profesor;
+    @Getter
+    @Setter
     private String nombre;
+    @Getter
+    @Setter
     private String primer_apellido;
+    @Getter
+    @Setter
     private int telefono;
+    @Getter
+    @Setter
     private String email;
+    @Getter
+    @Setter
     private List<Grupo> grupos;
 
     public Profesor(String cedula_Profesor, String nombre, String primer_apellido, int telefono, String email, List<Grupo> grupos) {
@@ -35,54 +50,6 @@ public class Profesor {
         this.telefono = 0;
         this.email = "";
         this.grupos = new ArrayList<>();
-    }
-
-    public String getCedula_Profesor() {
-        return cedula_Profesor;
-    }
-
-    public void setCedula_Profesor(String cedula_Profesor) {
-        this.cedula_Profesor = cedula_Profesor;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getPrimer_apellido() {
-        return primer_apellido;
-    }
-
-    public void setPrimer_apellido(String primer_apellido) {
-        this.primer_apellido = primer_apellido;
-    }
-
-    public int getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public List<Grupo> getGrupos() {
-        return grupos;
-    }
-
-    public void setGrupos(List<Grupo> grupos) {
-        this.grupos = grupos;
     }
 
     @Override

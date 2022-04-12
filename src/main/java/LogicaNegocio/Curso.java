@@ -1,11 +1,24 @@
 package LogicaNegocio;
 
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class Curso {
+    @Getter
+    @Setter
     private String codigo_Curso;
+    @Getter
+    @Setter
     private String nombre;
+    @Getter
+    @Setter
     private int creditos;
+    @Getter
+    @Setter
     private int horas_semanales;
+    @Getter
+    @Setter
     private Carrera carrera;
 
     public Curso(String codigoCurso, String nombre, int creditos, int horas, Carrera carrera) {
@@ -22,46 +35,6 @@ public class Curso {
         this.creditos = 0;
         this.horas_semanales = 0;
         this.carrera = new Carrera();
-    }
-
-    public String getCodigo_Curso() {
-        return codigo_Curso;
-    }
-
-    public void setCodigo_Curso(String codigo_Curso) {
-        this.codigo_Curso = codigo_Curso;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public int getCreditos() {
-        return creditos;
-    }
-
-    public void setCreditos(int creditos) {
-        this.creditos = creditos;
-    }
-
-    public int getHoras_semanales() {
-        return horas_semanales;
-    }
-
-    public void setHoras_semanales(int horas_semanales) {
-        this.horas_semanales = horas_semanales;
-    }
-
-    public Carrera getCarrera() {
-        return carrera;
-    }
-
-    public void setCarrera(Carrera carrera) {
-        this.carrera = carrera;
     }
 
     @Override

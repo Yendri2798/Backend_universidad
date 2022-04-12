@@ -1,13 +1,24 @@
 package LogicaNegocio;
 
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Date;
 
 public class Ciclo {
+    @Getter
+    @Setter
+    private final Date fecha_Incio;
+    @Getter
+    @Setter
+    private final Date fecha_Finalizacion;
+    @Getter
+    @Setter
     private int annio;
+    @Getter
+    @Setter
     private String numero;
-    private Date fecha_Incio;
-    private Date fecha_Finalizacion;
 
     public Ciclo(int annio, String numero, Date fechaInicio, Date fechaFinal) {
         this.annio = annio;
@@ -21,38 +32,6 @@ public class Ciclo {
         this.numero = "";
         this.fecha_Incio = new Date();
         this.fecha_Finalizacion = new Date();
-    }
-
-    public int getAnnio() {
-        return annio;
-    }
-
-    public void setAnnio(int annio) {
-        this.annio = annio;
-    }
-
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    public Date getFecha_Incio() {
-        return fecha_Incio;
-    }
-
-    public void setFecha_Incio(Date fecha_Incio) {
-        this.fecha_Incio = fecha_Incio;
-    }
-
-    public Date getFecha_Finalizacion() {
-        return fecha_Finalizacion;
-    }
-
-    public void setFecha_Finalizacion(Date fecha_Finalizacion) {
-        this.fecha_Finalizacion = fecha_Finalizacion;
     }
 
     @Override

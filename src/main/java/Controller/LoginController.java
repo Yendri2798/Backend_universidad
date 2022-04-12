@@ -1,5 +1,5 @@
 package Controller;
-
+/*
 import LogicaNegocio.Login;
 import Model.LoginModel;
 
@@ -38,3 +38,4 @@ public class LoginController {
     }
 
 }
+*/
