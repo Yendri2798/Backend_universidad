@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Backend_universidad.iml" filepath="$PROJECT_DIR$/.idea/modules/Backend_universidad.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Backend/Backend_universidad.Backend.iml" filepath="$PROJECT_DIR$/.idea/modules/Backend/Backend_universidad.Backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Backend_universidad.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Backend_universidad.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Backend_universidad.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Backend_universidad.test.iml" />
+    </modules>
+  </component>
+</project>
