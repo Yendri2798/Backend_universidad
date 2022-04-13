@@ -43,6 +43,10 @@ public class Profesor {
         this.email = email;
     }
 
+    public Profesor(String cedula_Profesor) {
+        this.cedula_Profesor = cedula_Profesor;
+    }
+
     public Profesor() {
         this.cedula_Profesor = "";
         this.nombre = "";

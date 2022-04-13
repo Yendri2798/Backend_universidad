@@ -36,6 +36,11 @@ public class Grupo {
         this.capacidad_Maxima = capacidad_Maxima;
     }
 
+    public Grupo(int numero_Grupo, Ciclo ciclo) {
+        this.numero_Grupo = numero_Grupo;
+        this.ciclo = ciclo;
+    }
+
     public Grupo() {
         this.numero_Grupo = 0;
         this.horario = "";

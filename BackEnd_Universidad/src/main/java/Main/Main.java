@@ -1,13 +1,85 @@
 package Main;
 
-import DataBaseConnectionDB.GlobalException;
-import DataBaseConnectionDB.NoDataException;
+import DataBaseConnectionDB.*;
+import LogicaNegocio.*;
 
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Main {
     public static void main(String[] args) throws SQLException, ClassNotFoundException, ParseException, NoDataException, GlobalException {
-        // CrearDatos.crearDatos();
+        try{
+            //ConnectionDB conector = new ConnectionDB();
+            // conector.conectar();
+            //conector.desconectar();
+            //Ciclo ciclo = new Ciclo();
+            //Carrera c = new Carrera();
+           // c.setCodigo_Carrera("EIF");
+           // c.setNombre("INFO");
+           // c.setTitulo("tit");
+          //  ServicioCarrera sc = new ServicioCarrera();
+            //sc.insertarCarrera(c);
+            Alumno a = new Alumno();
+            a.setCedulaAlumno("7026102525");
+            a.setNombre("Yendri");
+            a.setPrimer_apellido("Masis");
+            a.setTelefono(7542);
+            a.setEmail("anjaa");
+           String fecha1 = "2023/03/10";
+            Date date1 = new SimpleDateFormat("yyyy/MM/dd").parse(fecha1);
+            a.setFechaNacimiento(date1);
+          //  a.setCarrera(c);
+
+            //ServicioAlumno sn = new ServicioAlumno();
+            //sn.insertarAlumno(a);
+            Nota nota = new Nota();
+            nota.setId_Curso("EIF500");
+            nota.setNota(100);
+            nota.setAlumno(a);
+            ServicioNota sn = new ServicioNota();
+            //sn.buscarNotasAlumno("7026102525");
+            Profesor p = new Profesor();
+            p.setCedula_Profesor("702645320");
+            p.setNombre("Pablo");
+            p.setPrimer_apellido("Garro");
+            p.setTelefono(545);
+            p.setEmail("hsuhus");
+            ServicioProfesor sp = new ServicioProfesor();
+            //sp.insertarProfesor(p);
+            Consejero c = new Consejero();
+            c.setAlumno(a);
+            c.setProfesor(p);
+            ServicioConsejero sc = new ServicioConsejero();
+            sc.insertarConsejero(c);
+            //ciclo.setAnnio(2022);
+            //ciclo.setNumero("I Ciclo");
+            //ciclo.setFecha_Inicio(date1);
+            //ciclo.setFecha_Finalizacion(date2);
+
+            // ServicioCiclo servicio = new ServicioCiclo();
+            //servicio.insertarCiclo(ciclo);
+
+           // ServicioCiclo servicio = new ServicioCiclo();
+            //ciclo.setAnnio(2022);
+            // ciclo.setNumero("II Ciclo");
+            //ciclo.setFecha_Inicio(date1);
+            //ciclo.setFecha_Finalizacion(date2);
+            //servicio.modificaCiclo(ciclo);
+
+            //for (Ciclo pr : servicio.listarCiclo()) {
+            //System.out.println(pr.toString());
+            // }
+
+
+            //servicio.eliminarCiclo(1,"II Ciclo");
+
+        } catch (GlobalException | NoDataException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
+

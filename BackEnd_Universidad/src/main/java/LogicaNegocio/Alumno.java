@@ -32,6 +32,10 @@ public class Alumno {
         this.carrera = carrera;
     }
 
+    public Alumno(String cedulaAlumno) {
+        this.cedulaAlumno = cedulaAlumno;
+    }
+
     public Alumno() {
         this.cedulaAlumno = "";
         this.nombre = "";

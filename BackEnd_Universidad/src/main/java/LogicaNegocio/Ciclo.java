@@ -9,10 +9,10 @@ import java.util.Date;
 public class Ciclo {
     @Getter
     @Setter
-    private final Date fecha_Incio;
+    private Date fecha_Incio;
     @Getter
     @Setter
-    private final Date fecha_Finalizacion;
+    private Date fecha_Finalizacion;
     @Getter
     @Setter
     private int annio;
@@ -32,6 +32,10 @@ public class Ciclo {
         this.numero = "";
         this.fecha_Incio = new Date();
         this.fecha_Finalizacion = new Date();
+    }
+
+    public Ciclo(int annio) {
+        this.annio = annio;
     }
 
     @Override
