@@ -16,13 +16,15 @@ public class Main {
             //ConnectionDB conector = new ConnectionDB();
             // conector.conectar();
             //conector.desconectar();
-            //Ciclo ciclo = new Ciclo();
-            //Carrera c = new Carrera();
-           // c.setCodigo_Carrera("EIF");
-           // c.setNombre("INFO");
-           // c.setTitulo("tit");
-          //  ServicioCarrera sc = new ServicioCarrera();
+            Ciclo ciclo = new Ciclo();
+            Carrera c = new Carrera();
+           c.setCodigo_Carrera("EIF");
+            c.setNombre("INFO");
+            c.setTitulo("tit");
+            ServicioCarrera sc = new ServicioCarrera();
             //sc.insertarCarrera(c);
+
+
             Alumno a = new Alumno();
             a.setCedulaAlumno("7026102525");
             a.setNombre("Yendri");
@@ -50,20 +52,48 @@ public class Main {
             p.setEmail("hsuhus");
             ServicioProfesor sp = new ServicioProfesor();
             //sp.insertarProfesor(p);
-            Consejero c = new Consejero();
-            c.setAlumno(a);
-            c.setProfesor(p);
-            ServicioConsejero sc = new ServicioConsejero();
-            sc.insertarConsejero(c);
-            //ciclo.setAnnio(2022);
-            //ciclo.setNumero("I Ciclo");
-            //ciclo.setFecha_Inicio(date1);
-            //ciclo.setFecha_Finalizacion(date2);
+           // Consejero c = new Consejero();
+            //c.setAlumno(a);
+           // c.setProfesor(p);
+            //ServicioConsejero sc = new ServicioConsejero();
+            //sc.insertarConsejero(c);
+            ciclo.setAnnio(2022);
+            ciclo.setNumero("I Ciclo");
+            String fech1 = "2023/03/10";
+            Date dat1 = new SimpleDateFormat("yyyy/MM/dd").parse(fech1);
+            String fecha2 = "2023/03/10";
+            Date date2 = new SimpleDateFormat("yyyy/MM/dd").parse(fecha2);
+            ciclo.setFecha_Incio(dat1);
+            ciclo.setFecha_Finalizacion(date2);
+            ServicioCiclo se = new ServicioCiclo();
+            //se.insertarCiclo(ciclo);
+            Carrera carrera = new Carrera();
+
+            Curso curso = new Curso();
+            curso.setCodigo_Curso("Eifggs");
+            curso.setNombre("Progra");
+            curso.setCreditos(5);
+            curso.setHoras_semanales(5);
+            curso.setCarrera(c);
+            ServicioCurso sq = new ServicioCurso();
+            //sq.insertarCurso(curso);
+
+            Grupo g = new Grupo();
+            g.setNumero_Grupo(5);
+            g.setHorario("viernes");
+            g.setCiclo(ciclo);
+            g.setCurso(curso);
+            g.setProfesor(p);
+            g.setCampos_Restantes(20);
+            g.setCapacidad_Maxima(30);
+            ServicioGrupo l = new ServicioGrupo();
+            l.eliminarGrupo(5);
+
 
             // ServicioCiclo servicio = new ServicioCiclo();
             //servicio.insertarCiclo(ciclo);
 
-           // ServicioCiclo servicio = new ServicioCiclo();
+            ServicioCiclo servicio = new ServicioCiclo();
             //ciclo.setAnnio(2022);
             // ciclo.setNumero("II Ciclo");
             //ciclo.setFecha_Inicio(date1);
@@ -74,8 +104,8 @@ public class Main {
             //System.out.println(pr.toString());
             // }
 
+            //servicio.eliminarCiclo(2022,"II Ciclo");
 
-            //servicio.eliminarCiclo(1,"II Ciclo");
 
         } catch (GlobalException | NoDataException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);

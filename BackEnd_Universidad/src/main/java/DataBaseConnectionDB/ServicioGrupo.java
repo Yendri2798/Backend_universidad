@@ -19,7 +19,7 @@ public class ServicioGrupo extends ConnectionDB {
 
     private static final String CONSULTAR_GRUPO = "{?=call buscarGrupo(?)}";
     private static final String LISTAR_GRUPO = "{?=call listarGrupo()}";
-    private static final String ELIMINAR_GRUPO = "{call eliminaGrupo(?, ?)}";
+    private static final String ELIMINAR_GRUPO = "{call eliminaGrupo(?)}";
 
     private static final String MODIFICA_CAMPOS_RESTANTES = "{call modificaGrupoCamposRestantes(?)}";
 
