@@ -2,23 +2,33 @@ package LogicaNegocio;
 
 
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Date;
 
 public class Alumno {
 
-
+    @Getter
+    @Setter
     private String cedulaAlumno;
-
+    @Getter
+    @Setter
     private String nombre;
-
+    @Getter
+    @Setter
     private String primer_apellido;
-
+    @Getter
+    @Setter
     private int telefono;
-
+    @Getter
+    @Setter
     private String email;
-
+    @Getter
+    @Setter
     private Date fechaNacimiento;
-
+    @Getter
+    @Setter
     private Carrera carrera;
 
     public Alumno(String cedulaAlumno, String nombre, String apellido, int telefono,
@@ -59,59 +69,4 @@ public class Alumno {
                 '}';
     }
 
-    public String getCedulaAlumno() {
-        return cedulaAlumno;
-    }
-
-    public void setCedulaAlumno(String cedulaAlumno) {
-        this.cedulaAlumno = cedulaAlumno;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getPrimer_apellido() {
-        return primer_apellido;
-    }
-
-    public void setPrimer_apellido(String primer_apellido) {
-        this.primer_apellido = primer_apellido;
-    }
-
-    public int getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Date getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public void setFechaNacimiento(Date fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
-    public Carrera getCarrera() {
-        return carrera;
-    }
-
-    public void setCarrera(Carrera carrera) {
-        this.carrera = carrera;
-    }
 }
