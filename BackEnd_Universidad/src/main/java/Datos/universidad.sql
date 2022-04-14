@@ -632,5 +632,115 @@ insert into Matricula values(idPremat, cedAlum);
 end;
 /
 
+/*INSERCIÓN DE DATOS PROFESOR*/
+
+insert into profesor(cedula_profesor,nombre,primer_apellido,telefono,email) values ('402510369','Isabella','Hernandez', 85895623,'isahernandez13@gmail.com');
+insert into profesor(cedula_profesor,nombre,primer_apellido,telefono,email) values ('705210486','Randall','Porras', 85897612,'randallporras@gmail.com');
+insert into profesor(cedula_profesor,nombre,primer_apellido,telefono,email) values ('301240598','Fiorella','Perez', 88968532,'fiorellap@gmail.com');
+insert into profesor(cedula_profesor,nombre,primer_apellido,telefono,email) values ('705620365','Sonia','Sanchez', 86595623,'ssanchez@gmail.com');
+insert into profesor(cedula_profesor,nombre,primer_apellido,telefono,email) values ('201230258','Maria','Gomez', 22456589,'mgomez23@gmail.com');
+insert into profesor(cedula_profesor,nombre,primer_apellido,telefono,email) values ('102580456','Cristina','Ramirez', 87895632,'cristinaram12@gmail.com');
+
+/*select * from profesor;*/
+
+/*INSERCIÓN DE DATOS CARRERA*/
+
+insert into carrera(codigo_carrera,nombre,titulo) values ('INGE500','Ingenieria en Sistemas','Licenciatura');
+insert into carrera(codigo_carrera,nombre,titulo) values ('CONTA700','Contabilidad','Licenciatura');
+insert into carrera(codigo_carrera,nombre,titulo) values ('ADMIN400','Administracion de empresas','Maestria');
+insert into carrera(codigo_carrera,nombre,titulo) values ('ENFE800','Enfermeria','Bachillerato');
+insert into carrera(codigo_carrera,nombre,titulo) values ('INGE300','Ingenieria electronica','Licenciatura');
+
+/*select * from carrera;*/
+
+/*INSERCIÓN DE DATOS CURSO*/
+
+insert into curso(codigo_curso,nombre,creditos,horas_semanales,carrera_codigo) values ('EIF400','Programacion IV',4,6,'INGE500');
+insert into curso(codigo_curso,nombre,creditos,horas_semanales,carrera_codigo) values ('CONT701','Contabilidad 1',3,5,'CONTA700');
+insert into curso(codigo_curso,nombre,creditos,horas_semanales,carrera_codigo) values ('ADM402','Administracion 1',4,6,'ADMIN400');
+insert into curso(codigo_curso,nombre,creditos,horas_semanales,carrera_codigo) values ('ENF805','Laboratorio 1',4,7,'ENFE800');
+insert into curso(codigo_curso,nombre,creditos,horas_semanales,carrera_codigo) values ('ING301','Fundamentos',4,6,'INGE300');
+
+/*select * from curso;*/
+
+/*INSERCIÓN DE DATOS ALUMNO*/
+
+insert into alumno(cedula_alumno,nombre,primer_apellido,telefono,email,fecha_nacimiento,carrera_codigo) values ('502510369','Oscar','Mendez',87952630,'omendez12@gmail.com','01/06/1998','INGE500');
+insert into alumno(cedula_alumno,nombre,primer_apellido,telefono,email,fecha_nacimiento,carrera_codigo) values ('201520896','Gianna','Del Campo',87989623,'gdelvalle56@gmail.com','13/05/2000','CONTA700');
+insert into alumno(cedula_alumno,nombre,primer_apellido,telefono,email,fecha_nacimiento,carrera_codigo) values ('102560369','Alhanna','Gonzalez',22000202,'agonzalez13@gmail.com','20/10/1995','ENFE800');
+insert into alumno(cedula_alumno,nombre,primer_apellido,telefono,email,fecha_nacimiento,carrera_codigo) values ('302130596','Jose','Castillo',27650022,'jcastillo52@gmail.com','04/02/1985','ADMIN400');
+insert into alumno(cedula_alumno,nombre,primer_apellido,telefono,email,fecha_nacimiento,carrera_codigo) values ('603210596','Manuel','Masis',84858689,'manumasis23@gmail.com','01/06/1980','INGE300');
+
+/*select* from alumno;*/
+
+
+/*INSERCIÓN DE DATOS CICLO*/
+
+insert into ciclo(annio,numero,fecha_incio,fecha_finalizacion) values (2023,'I Ciclo','01/03/2023','01/07/2023');
+insert into ciclo(annio,numero,fecha_incio,fecha_finalizacion) values (2023,'II Ciclo','01/08/2023','01/12/2023');
+insert into ciclo(annio,numero,fecha_incio,fecha_finalizacion) values (2024,'I Ciclo','01/03/2024','01/07/2024');
+insert into ciclo(annio,numero,fecha_incio,fecha_finalizacion) values (2024,'II Ciclo','01/03/2024','01/07/2024');
+insert into ciclo(annio,numero,fecha_incio,fecha_finalizacion) values (2025,'I Ciclo','01/03/2025','01/07/2025');
+insert into ciclo(annio,numero,fecha_incio,fecha_finalizacion) values (2025,'II Ciclo','01/08/2025','01/12/2025');
+
+/*select * from ciclo;*/
+
+
+/*INSERCIÓN DE DATOS GRUPO*/
+
+insert into grupo(numero_grupo,horario,campos_restantes,capacidad_maxima,ciclo_annio,curso_codigo,profesor_cedula,numero_ciclo) values (1,'martes-viernes',10,30,2023,'EIF400','402510369','I Ciclo');
+insert into grupo(numero_grupo,horario,campos_restantes,capacidad_maxima,ciclo_annio,curso_codigo,profesor_cedula,numero_ciclo) values (2,'lunes-jueves',8,25,2023,'CONT701','705210486','II Ciclo');
+insert into grupo(numero_grupo,horario,campos_restantes,capacidad_maxima,ciclo_annio,curso_codigo,profesor_cedula,numero_ciclo) values (3,'sabado',2,30,2024,'ADM402','301240598','I Ciclo');
+insert into grupo(numero_grupo,horario,campos_restantes,capacidad_maxima,ciclo_annio,curso_codigo,profesor_cedula,numero_ciclo) values (4,'miercoles',5,15,2024,'ENF805','705620365','II Ciclo');
+insert into grupo(numero_grupo,horario,campos_restantes,capacidad_maxima,ciclo_annio,curso_codigo,profesor_cedula,numero_ciclo) values (5,'sabado',4,15,2025,'ING301','201230258','I Ciclo');
+
+/*select * from grupo;*/
+
+
+/*INSERCIÓN DE DATOS NOTA*/
+
+insert into nota_alumno(id_curso,nota,alumno_cedula) values('EIF400',100,'502510369');
+insert into nota_alumno(id_curso,nota,alumno_cedula) values('CONT701',90,'201520896');
+insert into nota_alumno(id_curso,nota,alumno_cedula) values('ADM402',85,'102560369');
+insert into nota_alumno(id_curso,nota,alumno_cedula) values('ENF805',45,'302130596');
+insert into nota_alumno(id_curso,nota,alumno_cedula) values('ING301',95,'603210596');
+
+/*select* from nota_alumno;*/
+
+/*INSERCIÓN DE DATOS CONSEJERO*/
+
+insert into consejero(alumno_cedula,profesor_cedula) values('502510369','402510369');
+insert into consejero(alumno_cedula,profesor_cedula) values('201520896','705210486');
+insert into consejero(alumno_cedula,profesor_cedula) values('102560369','301240598');
+
+/*select* from consejero;*/
+
+/*INSERCIÓN DE DATOS PREMATRICULA*/
+
+insert into prematricula(idpre,estado,alumno_cedula,grupo_num,grupo_ciclo) values (1,'pendiente','502510369',1,2023);
+insert into prematricula(idpre,estado,alumno_cedula,grupo_num,grupo_ciclo) values (2,'pendiente','201520896',2,2023);
+insert into prematricula(idpre,estado,alumno_cedula,grupo_num,grupo_ciclo) values (3,'pendiente','102560369',3,2024);
+
+select * from prematricula;
+
+/*INSERCIÓN DE DATOS ANALISIS*/
+
+insert into analisis(consejero_alumno,consejero_profesor,prematricula_id) values ('502510369','402510369',1);
+insert into analisis(consejero_alumno,consejero_profesor,prematricula_id) values ('201520896','705210486',5);
+insert into analisis(consejero_alumno,consejero_profesor,prematricula_id) values ('102560369','301240598',6);
+
+/*select* from analisis;*/
+
+/*INSERCIÓN DE DATOS MATRICULA*/
+
+insert into matricula(prematric_id,alumno_cedula) values (1,'502510369');
+insert into matricula(prematric_id,alumno_cedula) values (5,'201520896');
+insert into matricula(prematric_id,alumno_cedula) values (6,'102560369');
+
+/*select * from matricula;*/
+
+
+
+
 
 
