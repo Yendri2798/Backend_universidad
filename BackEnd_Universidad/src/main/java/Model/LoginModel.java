@@ -6,14 +6,14 @@ import DataBaseConnectionDB.ServicioLogin;
 import LogicaNegocio.Login;
 
 public class LoginModel {
-    private final LoginModel instancia = null;
+    private static final LoginModel instancia = null;
     private final ServicioLogin servicio;
 
     private LoginModel() {
         servicio = new ServicioLogin();
     }
 
-    public LoginModel obtenerInstancia() {
+    public static LoginModel obtenerInstancia() {
         return instancia == null ? new LoginModel() : instancia;
     }
 

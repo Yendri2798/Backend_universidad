@@ -29,8 +29,8 @@ public class Login {
     @Override
     public String toString() {
         return "Login " +
-                "cedula='" + cedula + ' ' +
-                ", contraseña='" + contrasena + ' ' +
-                ", rol='" + rol + '\'';
+                "cedula=" + cedula + ' ' +
+                ", contraseña=" + contrasena + ' ' +
+                ", rol=" + rol ;
     }
 }

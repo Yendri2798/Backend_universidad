@@ -63,11 +63,12 @@ public class ServicioLogin extends ConnectionDB {
 
     public boolean verificarLogin(String id, String pwd) throws NoDataException, GlobalException {
         Login ptr = this.obtenerLogin(id);
-        return ptr.getCedula() == id && ptr.getContrasena() == pwd;
+        System.out.println(ptr);
+        return (ptr.getCedula().equals(id)) && (ptr.getContrasena().equals(pwd));
     }
 
     public String obtenerRolLogin(String id) throws NoDataException, GlobalException {
-        Login ptr = this.obtenerLogin(id);
+
         return this.obtenerLogin(id).getRol();
     }
 
