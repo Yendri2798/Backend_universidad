@@ -2,9 +2,7 @@ package Model;
 
 import DataBaseConnectionDB.GlobalException;
 import DataBaseConnectionDB.NoDataException;
-import DataBaseConnectionDB.ServicioCarrera;
 import DataBaseConnectionDB.ServicioGrupo;
-import LogicaNegocio.Carrera;
 import LogicaNegocio.Grupo;
 
 import java.util.List;
@@ -14,7 +12,7 @@ public class GrupoModel {
     private final ServicioGrupo servicio;
 
     private GrupoModel() {
-        servicio = new ServicioGrupo();
+        servicio =  ServicioGrupo.obtenerInstancia();
     }
 
 

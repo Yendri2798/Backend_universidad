@@ -13,16 +13,22 @@ import java.util.List;
 
 public class ServicioCarrera extends ConnectionDB {
 
+    private static ServicioCarrera instancia = null;
     private final String INSERTAR_CARRERA = "{call insertaCarrera(?,?,?)}";
     private final String MODIFICAR_CARRERA = "{call modificaCarrera(?,?,?)}";
-
     private final String CONSULTAR_CARRERA = "{?=call buscarCarrera(?)}";
     private final String LISTAR_CARRERA = "{?=call listarCarrera()}";
     private final String ELIMINAR_CARRERA = "{call eliminaCarrera(?)}";
 
-    public ServicioCarrera() {
+    private ServicioCarrera() {
+        super();
 
     }
+
+    public static ServicioCarrera obtenerInstancia() {
+        return instancia == null ? new ServicioCarrera() : instancia;
+    }
+
 
     public void insertarCarrera(Carrera carrera) throws GlobalException, NoDataException {
         try {
@@ -108,7 +114,7 @@ public class ServicioCarrera extends ConnectionDB {
         ResultSet rs = null;
         Carrera carrera = new Carrera();
 
-        ServicioCurso servicio = new ServicioCurso();
+        ServicioCurso servicio =  ServicioCurso.obtenerInstancia();
         List<Curso> cursos = new ArrayList<>();
         cursos = servicio.buscarCarreraCurso(id);
         CallableStatement pstmt = null;
@@ -153,7 +159,7 @@ public class ServicioCarrera extends ConnectionDB {
         }
         ResultSet rs = null;
         List<Carrera> carreras = new ArrayList<>();
-        ServicioCurso service = new ServicioCurso();
+        ServicioCurso service =  ServicioCurso.obtenerInstancia();
         CallableStatement pstmt = null;
         try {
             pstmt = conexion.prepareCall(LISTAR_CARRERA);

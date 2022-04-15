@@ -61,7 +61,7 @@ public class CarreraController {
 
     @PUT
     @Path("/modificarCarrera")
-    public Response modificarCarrera(Carrera carrera)  {
+    public Response modificarCarrera(Carrera carrera) {
         System.out.println("metodo modificar carrera");
         try {
             carreraModel.modificar(carrera);

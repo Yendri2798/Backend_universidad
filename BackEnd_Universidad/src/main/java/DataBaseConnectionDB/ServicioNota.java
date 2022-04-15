@@ -16,7 +16,14 @@ public class ServicioNota extends ConnectionDB {
     private static final String MODIFICAR_NOTA = "{call modificaNota(?,?,?)}";
     private static final String CONSULTAR_NOTA = "{?=call buscarNota(?)}";
 
-    public ServicioNota() {
+    private static ServicioNota instancia = null;
+
+    private ServicioNota() {
+        super();
+    }
+
+    public static ServicioNota obtenerInstancia() {
+        return instancia == null ? new ServicioNota() : instancia;
     }
 
     public void insertarNota(Nota nota) throws GlobalException, NoDataException {

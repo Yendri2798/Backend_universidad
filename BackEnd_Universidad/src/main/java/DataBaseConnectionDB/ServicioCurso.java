@@ -21,6 +21,16 @@ public class ServicioCurso extends ConnectionDB {
     private static final String ELIMINAR_CURSO = "{call eliminaCurso(?)}";
     private static final String CONSULTAR_CURSO_CARRERA = "{?=call buscarCursoCarrera (?)}";
 
+    private static ServicioCurso instancia = null;
+
+    private ServicioCurso() {
+        super();
+    }
+
+    public static ServicioCurso obtenerInstancia() {
+        return instancia == null ? new ServicioCurso() : instancia;
+    }
+
     public void insertarCurso(Curso curso) throws GlobalException, NoDataException {
         try {
             conectar();
@@ -109,7 +119,7 @@ public class ServicioCurso extends ConnectionDB {
         ResultSet rs = null;
         Curso curso = new Curso();
         Carrera carrera = new Carrera();
-        ServicioCarrera service = new ServicioCarrera();
+        ServicioCarrera service =  ServicioCarrera.obtenerInstancia();
 
         CallableStatement pstmt = null;
         try {
@@ -159,7 +169,7 @@ public class ServicioCurso extends ConnectionDB {
         ResultSet rs = null;
         List<Curso> curso = new ArrayList<>();
         Carrera carrera = new Carrera();
-        ServicioCarrera service = new ServicioCarrera();
+        ServicioCarrera service =  ServicioCarrera.obtenerInstancia();
         CallableStatement pstmt = null;
         try {
             pstmt = conexion.prepareCall(LISTAR_CURSO);

@@ -61,7 +61,7 @@ public class GrupoController {
 
     @PUT
     @Path("/modificarGrupo")
-    public Response modificarGrupo(Grupo grupo)  {
+    public Response modificarGrupo(Grupo grupo) {
         System.out.println("metodo modificar grupo");
         try {
             grupoModel.modificar(grupo);

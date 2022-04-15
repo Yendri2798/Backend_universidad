@@ -19,7 +19,14 @@ public class ServicioPrematricula extends ConnectionDB {
     private static final String ELIMINAR_PREMATRICULA = "{call eliminaPrematricula(?)}";
     private static final String CONSULTAR_PREMATRICULA = "{?=call buscarPrematricula(?)}";
 
-    public ServicioPrematricula() {
+    private static ServicioPrematricula instancia = null;
+
+    private ServicioPrematricula() {
+        super();
+    }
+
+    public static ServicioPrematricula obtenerInstancia() {
+        return instancia == null ? new ServicioPrematricula() : instancia;
     }
 
     public void insertarPrematricula(Prematricula prematricula) throws GlobalException, NoDataException {

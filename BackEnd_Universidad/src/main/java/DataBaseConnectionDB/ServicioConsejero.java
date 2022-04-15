@@ -16,7 +16,14 @@ public class ServicioConsejero extends ConnectionDB {
     private static final String CONSULTAR_CON_ALUMNO = "{?=call buscarConsejeroAlumno(?)}";
     private static final String CONSULTAR_CON_PROFE = "{?=call buscarConsejeroProfe(?)}";
 
-    public ServicioConsejero() {
+    private static ServicioConsejero instancia = null;
+
+    private ServicioConsejero() {
+        super();
+    }
+
+    public static ServicioConsejero obtenerInstancia() {
+        return instancia == null ? new ServicioConsejero() : instancia;
     }
 
     public void insertarConsejero(Consejero consejero) throws GlobalException, NoDataException {

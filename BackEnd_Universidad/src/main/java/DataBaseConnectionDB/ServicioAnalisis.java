@@ -15,7 +15,14 @@ public class ServicioAnalisis extends ConnectionDB {
     private static final String ELIMINAR_ANALISIS = "{call eliminaAnalisis(?)}";
     private static final String CONSULTAR_ANALISIS = "{?=call buscarAnalisis(?)}";
 
-    public ServicioAnalisis() {
+    private static ServicioAnalisis instancia = null;
+
+    private ServicioAnalisis() {
+        super();
+    }
+
+    public static ServicioAnalisis obtenerInstancia() {
+        return instancia == null ? new ServicioAnalisis() : instancia;
     }
 
     public void insertarAnalisis(Analisis analisis) throws GlobalException, NoDataException {

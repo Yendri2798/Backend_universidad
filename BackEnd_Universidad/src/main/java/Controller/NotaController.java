@@ -35,7 +35,7 @@ public class NotaController {
 
     @PUT
     @Path("/modificarNota")
-    public Response modificarNota(Nota nota)  {
+    public Response modificarNota(Nota nota) {
         System.out.println("metodo modificar nota");
         try {
             notaModel.modificar(nota);

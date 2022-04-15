@@ -61,7 +61,7 @@ public class CicloController {
 
     @PUT
     @Path("/modificarCiclo")
-    public Response modificarCiclo(Ciclo ciclo)  {
+    public Response modificarCiclo(Ciclo ciclo) {
         System.out.println("metodo modificar ciclo");
         try {
             cicloModel.modificarCiclo(ciclo);

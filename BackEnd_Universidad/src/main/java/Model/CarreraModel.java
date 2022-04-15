@@ -12,7 +12,7 @@ public class CarreraModel {
     private final ServicioCarrera servicio;
 
     private CarreraModel() {
-        servicio = new ServicioCarrera();
+        servicio =  ServicioCarrera.obtenerInstancia();
     }
 
 

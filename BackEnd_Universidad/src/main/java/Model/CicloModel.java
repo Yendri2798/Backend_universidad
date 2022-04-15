@@ -12,7 +12,7 @@ public class CicloModel {
     private final ServicioCiclo servicio;
 
     private CicloModel() {
-        servicio = new ServicioCiclo();
+        servicio =  ServicioCiclo.obtenerInstancia();
     }
 
 

@@ -21,7 +21,7 @@ public class Main {
             c.setCodigo_Carrera("EIF");
             c.setNombre("INFO");
             c.setTitulo("tit");
-            ServicioCarrera sc = new ServicioCarrera();
+            ServicioCarrera sc =  ServicioCarrera.obtenerInstancia();
             //sc.insertarCarrera(c);
 
 
@@ -42,7 +42,7 @@ public class Main {
             nota.setId_Curso("EIF500");
             nota.setNota(100);
             nota.setAlumno(a);
-            ServicioNota sn = new ServicioNota();
+            ServicioNota sn =  ServicioNota.obtenerInstancia();
             //sn.buscarNotasAlumno("7026102525");
             Profesor p = new Profesor();
             p.setCedula_Profesor("702645320");
@@ -50,7 +50,7 @@ public class Main {
             p.setPrimer_apellido("Garro");
             p.setTelefono(545);
             p.setEmail("hsuhus");
-            ServicioProfesor sp = new ServicioProfesor();
+            ServicioProfesor sp =  ServicioProfesor.obtenerInstancia();
             //sp.insertarProfesor(p);
             // Consejero c = new Consejero();
             //c.setAlumno(a);
@@ -65,7 +65,7 @@ public class Main {
             Date date2 = new SimpleDateFormat("yyyy/MM/dd").parse(fecha2);
             ciclo.setFecha_Incio(dat1);
             ciclo.setFecha_Finalizacion(date2);
-            ServicioCiclo se = new ServicioCiclo();
+            ServicioCiclo se =  ServicioCiclo.obtenerInstancia();
             //se.insertarCiclo(ciclo);
             Carrera carrera = new Carrera();
 
@@ -75,7 +75,7 @@ public class Main {
             curso.setCreditos(5);
             curso.setHoras_semanales(5);
             curso.setCarrera(c);
-            ServicioCurso sq = new ServicioCurso();
+            ServicioCurso sq =  ServicioCurso.obtenerInstancia();
             //sq.insertarCurso(curso);
 
             Grupo g = new Grupo();
@@ -86,14 +86,14 @@ public class Main {
             g.setProfesor(p);
             g.setCampos_Restantes(20);
             g.setCapacidad_Maxima(30);
-            ServicioGrupo l = new ServicioGrupo();
+            ServicioGrupo l =  ServicioGrupo.obtenerInstancia();
             l.eliminarGrupo(5);
 
 
             // ServicioCiclo servicio = new ServicioCiclo();
             //servicio.insertarCiclo(ciclo);
 
-            ServicioCiclo servicio = new ServicioCiclo();
+            ServicioCiclo servicio =  ServicioCiclo.obtenerInstancia();
             //ciclo.setAnnio(2022);
             // ciclo.setNumero("II Ciclo");
             //ciclo.setFecha_Inicio(date1);

@@ -123,7 +123,7 @@ public class ServicioAlumno extends ConnectionDB {
         ResultSet rs = null;
         Alumno alumno = new Alumno();
         Carrera carrera = new Carrera();
-        ServicioCarrera service = new ServicioCarrera();
+        ServicioCarrera service =  ServicioCarrera.obtenerInstancia();
 
         CallableStatement pstmt = null;
         try {
@@ -177,7 +177,7 @@ public class ServicioAlumno extends ConnectionDB {
 
         List<Alumno> alumnos = new ArrayList<>();
         Carrera carrera = new Carrera();
-        ServicioCarrera servicioCarrera = new ServicioCarrera();
+        ServicioCarrera servicioCarrera =  ServicioCarrera.obtenerInstancia();
 
         CallableStatement pstmt = null;
         try {

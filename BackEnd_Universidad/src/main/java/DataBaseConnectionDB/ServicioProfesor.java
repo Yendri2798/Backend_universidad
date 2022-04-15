@@ -18,8 +18,14 @@ public class ServicioProfesor extends ConnectionDB {
     private static final String LISTAR_PROFESOR = "{?=call listarProfesor()}";
     private static final String ELIMINAR_PROFESOR = "{call eliminaProfesor(?)}";
 
+    private static ServicioProfesor instancia = null;
 
-    public ServicioProfesor() {
+    private ServicioProfesor() {
+        super();
+    }
+
+    public static ServicioProfesor obtenerInstancia() {
+        return instancia == null ? new ServicioProfesor() : instancia;
     }
 
     public void insertarProfesor(Profesor profesor) throws GlobalException, NoDataException {

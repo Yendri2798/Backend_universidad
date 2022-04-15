@@ -19,8 +19,14 @@ public class ServicioCiclo extends ConnectionDB {
     private static final String LISTAR_CICLO = "{?=call listarCiclo()}";
     private static final String ELIMINAR_CICLO = "{call eliminaCiclo(?, ?)}";
 
+    private static ServicioCiclo instancia = null;
 
-    public ServicioCiclo() {
+    private ServicioCiclo() {
+        super();
+    }
+
+    public static ServicioCiclo obtenerInstancia() {
+        return instancia == null ? new ServicioCiclo() : instancia;
     }
 
     public void insertarCiclo(Ciclo ciclo) throws GlobalException, NoDataException {

@@ -23,8 +23,14 @@ public class ServicioGrupo extends ConnectionDB {
 
     private static final String MODIFICA_CAMPOS_RESTANTES = "{call modificaGrupoCamposRestantes(?)}";
 
+    private static ServicioGrupo instancia = null;
 
-    public ServicioGrupo() {
+    private ServicioGrupo() {
+        super();
+    }
+
+    public static ServicioGrupo obtenerInstancia() {
+        return instancia == null ? new ServicioGrupo() : instancia;
     }
 
     public void insertarGrupo(Grupo grupo) throws GlobalException, NoDataException {
@@ -124,8 +130,8 @@ public class ServicioGrupo extends ConnectionDB {
         Ciclo ciclo = new Ciclo();
         Curso curso = new Curso();
 
-        ServicioCurso servicioCurso = new ServicioCurso();
-        ServicioProfesor servicioProfesor = new ServicioProfesor();
+        ServicioCurso servicioCurso = ServicioCurso.obtenerInstancia();
+        ServicioProfesor servicioProfesor =  ServicioProfesor.obtenerInstancia();
 
         CallableStatement pstmt = null;
         try {
@@ -183,8 +189,8 @@ public class ServicioGrupo extends ConnectionDB {
         Ciclo ciclo = new Ciclo();
         Curso curso = new Curso();
 
-        ServicioCurso serviceCurso = new ServicioCurso();
-        ServicioProfesor serviceProfe = new ServicioProfesor();
+        ServicioCurso serviceCurso = ServicioCurso.obtenerInstancia();
+        ServicioProfesor serviceProfe =  ServicioProfesor.obtenerInstancia();
         CallableStatement pstmt = null;
 
         try {

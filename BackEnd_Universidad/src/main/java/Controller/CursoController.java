@@ -61,7 +61,7 @@ public class CursoController {
 
     @PUT
     @Path("/modificarCurso")
-    public Response modificarCurso(Curso curso)  {
+    public Response modificarCurso(Curso curso) {
         System.out.println("metodo modificar curso");
         try {
             cursoModel.modificarCurso(curso);

@@ -12,6 +12,7 @@ public class ServicioLogin extends ConnectionDB {
     private static final String obtenerLogin = "{?=call obtenerLogin(?)}";
     private static ServicioLogin instancia = null;
 
+
     private ServicioLogin() {
         super();
     }

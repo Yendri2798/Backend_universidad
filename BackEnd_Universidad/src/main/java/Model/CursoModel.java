@@ -12,7 +12,7 @@ public class CursoModel {
     private final ServicioCurso servicio;
 
     private CursoModel() {
-        servicio = new ServicioCurso();
+        servicio =  ServicioCurso.obtenerInstancia();
     }
 
 

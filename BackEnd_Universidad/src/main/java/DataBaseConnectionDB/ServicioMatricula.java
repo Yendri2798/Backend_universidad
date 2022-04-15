@@ -7,8 +7,14 @@ import java.sql.SQLException;
 
 public class ServicioMatricula extends ConnectionDB {
     private static final String INSERTAR_MATRICULA = "{call insertaMatricula(?,?)}";
+    private static ServicioMatricula instancia = null;
 
-    public ServicioMatricula() {
+    private ServicioMatricula() {
+        super();
+    }
+
+    public static ServicioMatricula obtenerInstancia() {
+        return instancia == null ? new ServicioMatricula() : instancia;
     }
 
     public void insertarMatricula(Matricula matricula) throws GlobalException, NoDataException {
