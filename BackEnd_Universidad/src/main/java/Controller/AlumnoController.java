@@ -64,7 +64,7 @@ public class AlumnoController {
 
     @PUT
     @Path("/modificarAlumno")
-    public Response modificarAlumno(Alumno alumno)  {
+    public Response modificarAlumno(Alumno alumno) {
         System.out.println("metodo modificar alumno");
         try {
             alumnoModel.modificar(alumno);
@@ -77,6 +77,5 @@ public class AlumnoController {
         }
         return Response.ok("Modifica alumno").build();
     }
-
 
 }
