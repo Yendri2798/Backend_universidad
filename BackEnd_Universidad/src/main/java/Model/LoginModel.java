@@ -10,7 +10,7 @@ public class LoginModel {
     private final ServicioLogin servicio;
 
     private LoginModel() {
-        servicio = new ServicioLogin();
+        servicio = ServicioLogin.obtenerInstancia();
     }
 
     public static LoginModel obtenerInstancia() {
