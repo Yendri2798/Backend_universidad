@@ -1,7 +1,5 @@
 package LogicaNegocio;
 
-
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -31,11 +29,11 @@ public class Alumno {
     @Setter
     private Carrera carrera;
 
-    public Alumno(String cedulaAlumno, String nombre, String apellido, int telefono,
-                  String email, Date fechaNacimiento, Carrera carrera) {
+
+    public Alumno(String cedulaAlumno, String nombre, String primer_apellido, int telefono, String email, Date fechaNacimiento, Carrera carrera) {
         this.cedulaAlumno = cedulaAlumno;
         this.nombre = nombre;
-        this.primer_apellido = apellido;
+        this.primer_apellido = primer_apellido;
         this.telefono = telefono;
         this.email = email;
         this.fechaNacimiento = fechaNacimiento;

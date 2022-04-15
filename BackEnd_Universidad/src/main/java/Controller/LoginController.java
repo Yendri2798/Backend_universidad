@@ -18,8 +18,8 @@ import jakarta.ws.rs.core.Response;
 public class LoginController {
 
 
-    private final LoginModel loginModell =LoginModel.obtenerInstancia();
-    private final AlumnoModel alumnoModel=AlumnoModel.obtenerInstancia();
+    private final LoginModel loginModell = LoginModel.obtenerInstancia();
+    private final AlumnoModel alumnoModel = AlumnoModel.obtenerInstancia();
 
     @POST
     @Path("/verify")
@@ -32,7 +32,7 @@ public class LoginController {
                 throw new Exception("Denegado");
             }
 
-      return Response.ok(a).build();
+            return Response.ok(a).build();
         } catch (Exception e) {
             return Response.status(Response.Status.NOT_ACCEPTABLE)
                     .entity(e.getMessage()).build();
@@ -41,7 +41,7 @@ public class LoginController {
 
     @POST
     @Path("/obtenerTipoUsuario")
-    public Response obtenerTipoUsuario(Login user){
+    public Response obtenerTipoUsuario(Login user) {
         try {
 
             String ptr = loginModell.obtenerRolLogin(user.getCedula());
@@ -56,17 +56,16 @@ public class LoginController {
 
     @POST
     @Path("/obtenerUsuario")
-    public Response obtenerUsuario(Login user){
+    public Response obtenerUsuario(Login user) {
         try {
 
-          Alumno alumno = alumnoModel.obtenerAlumno(user.getCedula());
+            Alumno alumno = alumnoModel.obtenerAlumno(user.getCedula());
             return Response.ok(alumno).build();
         } catch (Exception e) {
             return Response.status(Response.Status.NOT_ACCEPTABLE)
                     .entity(e.getMessage()).build();
         }
     }
-
 
 
 }

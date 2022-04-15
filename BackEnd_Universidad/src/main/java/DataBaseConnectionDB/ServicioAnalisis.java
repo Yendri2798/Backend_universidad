@@ -10,16 +10,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ServicioAnalisis extends ConnectionDB{
+public class ServicioAnalisis extends ConnectionDB {
     private static final String INSERTAR_ANALISIS = "{call insertaAnalisis(?,?,?)}";
-    private static final String ELIMINAR_ANALISIS= "{call eliminaAnalisis(?)}";
+    private static final String ELIMINAR_ANALISIS = "{call eliminaAnalisis(?)}";
     private static final String CONSULTAR_ANALISIS = "{?=call buscarAnalisis(?)}";
 
     public ServicioAnalisis() {
     }
 
-    public void insertarAnalisis(Analisis analisis) throws GlobalException, NoDataException
-    {
+    public void insertarAnalisis(Analisis analisis) throws GlobalException, NoDataException {
         try {
             conectar();
         } catch (ClassNotFoundException e) {
@@ -27,26 +26,25 @@ public class ServicioAnalisis extends ConnectionDB{
         } catch (SQLException e) {
             throw new NoDataException("La base de datos no se encuentra disponible");
         }
-        CallableStatement pstmt=null;
+        CallableStatement pstmt = null;
 
         try {
 
             pstmt = conexion.prepareCall(INSERTAR_ANALISIS);
-            pstmt.setString(1,analisis.getConsejero().getAlumno().getCedulaAlumno());
-            pstmt.setString(2,analisis.getConsejero().getProfesor().getCedula_Profesor());
-            pstmt.setInt(3,analisis.getPrematricula().getIdPrematricula());
+            pstmt.setString(1, analisis.getConsejero().getAlumno().getCedulaAlumno());
+            pstmt.setString(2, analisis.getConsejero().getProfesor().getCedula_Profesor());
+            pstmt.setInt(3, analisis.getPrematricula().getIdPrematricula());
 
 
             boolean resultado = pstmt.execute();
             if (resultado == true) {
-                throw new NoDataException ("No se realizo la inserción");
+                throw new NoDataException("No se realizo la inserción");
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
             throw new GlobalException("Llave duplicada");
-        }
-        finally {
+        } finally {
             try {
                 if (pstmt != null) {
                     pstmt.close();
@@ -61,45 +59,41 @@ public class ServicioAnalisis extends ConnectionDB{
     public List<Analisis> buscarAnalisis(String id) throws GlobalException, NoDataException {
         try {
             conectar();
-        }catch (ClassNotFoundException ex){
+        } catch (ClassNotFoundException ex) {
             throw new GlobalException("No se ha localizado el driver");
-        }catch (SQLException ex){
+        } catch (SQLException ex) {
             throw new NoDataException("La base de datos no se encuentra disponible");
         }
         ResultSet rs = null;
         List<Analisis> revisiones = new ArrayList<>();
 
-        CallableStatement pstmt= null;
+        CallableStatement pstmt = null;
         try {
 
             pstmt = conexion.prepareCall(CONSULTAR_ANALISIS);
             pstmt.registerOutParameter(1, OracleTypes.CURSOR);
-            pstmt.setString(2,id);
+            pstmt.setString(2, id);
             pstmt.execute();
-            rs = (ResultSet)pstmt.getObject(1);
+            rs = (ResultSet) pstmt.getObject(1);
             while (rs.next()) {
 
                 revisiones.add(new Analisis(
-                        new Consejero(new Alumno(rs.getString("consejero_Alumno")),new Profesor(rs.getString("consejero_Profesor"))),
+                        new Consejero(new Alumno(rs.getString("consejero_Alumno")), new Profesor(rs.getString("consejero_Profesor"))),
                         new Prematricula(rs.getInt("prematricula_id"))
                 ));
             }
-        }
-        catch (SQLException ex) {
+        } catch (SQLException ex) {
             throw new GlobalException("Sentencia no valida");
-        }
-        finally {
+        } finally {
             try {
-                if (rs!=null) {
+                if (rs != null) {
                     rs.close();
                 }
                 if (pstmt != null) {
                     pstmt.close();
                 }
                 desconectar();
-            }
-            catch(SQLException e)
-            {
+            } catch (SQLException e) {
                 throw new GlobalException("Estatutos invalidos o nulos");
             }
         }
@@ -107,8 +101,7 @@ public class ServicioAnalisis extends ConnectionDB{
 
     }
 
-    public void eliminaAnalisis(String id) throws GlobalException, NoDataException
-    {
+    public void eliminaAnalisis(String id) throws GlobalException, NoDataException {
         try {
             conectar();
         } catch (ClassNotFoundException e) {
@@ -119,14 +112,12 @@ public class ServicioAnalisis extends ConnectionDB{
         PreparedStatement pstmt = null;
         try {
             pstmt = conexion.prepareStatement(ELIMINAR_ANALISIS);
-            pstmt.setString(1,id);
+            pstmt.setString(1, id);
             int resultado = pstmt.executeUpdate();
 
             if (resultado == 0) {
-                throw new NoDataException ("No se pudo eliminar el Comprobante de pago");
-            }
-            else
-            {
+                throw new NoDataException("No se pudo eliminar el Comprobante de pago");
+            } else {
                 System.out.println("Eliminacion satisfactoria");
             }
         } catch (SQLException e) {

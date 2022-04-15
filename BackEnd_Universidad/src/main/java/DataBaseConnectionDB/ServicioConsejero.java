@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ServicioConsejero extends ConnectionDB{
+public class ServicioConsejero extends ConnectionDB {
     private static final String INSERTAR_CONSEJERO = "{call insertaConsejero(?,?)}";
     private static final String CONSULTAR_CON_ALUMNO = "{?=call buscarConsejeroAlumno(?)}";
     private static final String CONSULTAR_CON_PROFE = "{?=call buscarConsejeroProfe(?)}";
@@ -19,8 +19,7 @@ public class ServicioConsejero extends ConnectionDB{
     public ServicioConsejero() {
     }
 
-    public void insertarConsejero(Consejero consejero) throws GlobalException, NoDataException
-    {
+    public void insertarConsejero(Consejero consejero) throws GlobalException, NoDataException {
         try {
             conectar();
         } catch (ClassNotFoundException e) {
@@ -28,25 +27,24 @@ public class ServicioConsejero extends ConnectionDB{
         } catch (SQLException e) {
             throw new NoDataException("La base de datos no se encuentra disponible");
         }
-        CallableStatement pstmt=null;
+        CallableStatement pstmt = null;
 
         try {
 
             pstmt = conexion.prepareCall(INSERTAR_CONSEJERO);
-            pstmt.setString(1,consejero.getAlumno().getCedulaAlumno());
-            pstmt.setString(2,consejero.getProfesor().getCedula_Profesor());
+            pstmt.setString(1, consejero.getAlumno().getCedulaAlumno());
+            pstmt.setString(2, consejero.getProfesor().getCedula_Profesor());
 
 
             boolean resultado = pstmt.execute();
             if (resultado == true) {
-                throw new NoDataException ("No se realizo la inserción");
+                throw new NoDataException("No se realizo la inserción");
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
             throw new GlobalException("Llave duplicada");
-        }
-        finally {
+        } finally {
             try {
                 if (pstmt != null) {
                     pstmt.close();
@@ -61,43 +59,39 @@ public class ServicioConsejero extends ConnectionDB{
     public Consejero buscarConsejeroAlumno(String id) throws GlobalException, NoDataException {
         try {
             conectar();
-        }catch (ClassNotFoundException ex){
+        } catch (ClassNotFoundException ex) {
             throw new GlobalException("No se ha localizado el driver");
-        }catch (SQLException ex){
+        } catch (SQLException ex) {
             throw new NoDataException("La base de datos no se encuentra disponible");
         }
         ResultSet rs = null;
         Consejero consejero = new Consejero();
 
-        CallableStatement pstmt= null;
+        CallableStatement pstmt = null;
         try {
 
             pstmt = conexion.prepareCall(CONSULTAR_CON_ALUMNO);
             pstmt.registerOutParameter(1, OracleTypes.CURSOR);
-            pstmt.setString(2,id);
+            pstmt.setString(2, id);
             pstmt.execute();
-            rs = (ResultSet)pstmt.getObject(1);
+            rs = (ResultSet) pstmt.getObject(1);
             while (rs.next()) {
 
                 consejero = new Consejero(new Alumno(rs.getString("alumno_Cedula"))
                         , new Profesor(rs.getString("profesor_cedula")));
             }
-        }
-        catch (SQLException ex) {
+        } catch (SQLException ex) {
             throw new GlobalException("Sentencia no valida");
-        }
-        finally {
+        } finally {
             try {
-                if (rs!=null) {
+                if (rs != null) {
                     rs.close();
                 }
                 if (pstmt != null) {
                     pstmt.close();
                 }
                 desconectar();
-            }
-            catch(SQLException e)
-            {
+            } catch (SQLException e) {
                 throw new GlobalException("Estatutos invalidos o nulos");
             }
         }
@@ -108,43 +102,39 @@ public class ServicioConsejero extends ConnectionDB{
     public List<Consejero> buscarConsejeroProfe(String id) throws GlobalException, NoDataException {
         try {
             conectar();
-        }catch (ClassNotFoundException ex){
+        } catch (ClassNotFoundException ex) {
             throw new GlobalException("No se ha localizado el driver");
-        }catch (SQLException ex){
+        } catch (SQLException ex) {
             throw new NoDataException("La base de datos no se encuentra disponible");
         }
         ResultSet rs = null;
         List<Consejero> consejeros = new ArrayList<>();
 
-        CallableStatement pstmt= null;
+        CallableStatement pstmt = null;
         try {
 
             pstmt = conexion.prepareCall(CONSULTAR_CON_PROFE);
             pstmt.registerOutParameter(1, OracleTypes.CURSOR);
-            pstmt.setString(2,id);
+            pstmt.setString(2, id);
             pstmt.execute();
-            rs = (ResultSet)pstmt.getObject(1);
+            rs = (ResultSet) pstmt.getObject(1);
             while (rs.next()) {
 
                 consejeros.add(new Consejero(new Alumno(rs.getString("alumno_Cedula"))
                         , new Profesor(rs.getString("profesor_cedula"))));
             }
-        }
-        catch (SQLException ex) {
+        } catch (SQLException ex) {
             throw new GlobalException("Sentencia no valida");
-        }
-        finally {
+        } finally {
             try {
-                if (rs!=null) {
+                if (rs != null) {
                     rs.close();
                 }
                 if (pstmt != null) {
                     pstmt.close();
                 }
                 desconectar();
-            }
-            catch(SQLException e)
-            {
+            } catch (SQLException e) {
                 throw new GlobalException("Estatutos invalidos o nulos");
             }
         }

@@ -2,7 +2,6 @@ package LogicaNegocio;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 public class Login {
     @Getter
@@ -31,6 +30,6 @@ public class Login {
         return "Login " +
                 "cedula=" + cedula + ' ' +
                 ", contraseña=" + contrasena + ' ' +
-                ", rol=" + rol ;
+                ", rol=" + rol;
     }
 }

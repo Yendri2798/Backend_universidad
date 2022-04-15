@@ -12,13 +12,13 @@ import java.util.logging.Logger;
 
 public class Main {
     public static void main(String[] args) throws SQLException, ClassNotFoundException, ParseException, NoDataException, GlobalException {
-        try{
+        try {
             //ConnectionDB conector = new ConnectionDB();
             // conector.conectar();
             //conector.desconectar();
             Ciclo ciclo = new Ciclo();
             Carrera c = new Carrera();
-           c.setCodigo_Carrera("EIF");
+            c.setCodigo_Carrera("EIF");
             c.setNombre("INFO");
             c.setTitulo("tit");
             ServicioCarrera sc = new ServicioCarrera();
@@ -31,10 +31,10 @@ public class Main {
             a.setPrimer_apellido("Masis");
             a.setTelefono(7542);
             a.setEmail("anjaa");
-           String fecha1 = "2023/03/10";
+            String fecha1 = "2023/03/10";
             Date date1 = new SimpleDateFormat("yyyy/MM/dd").parse(fecha1);
             a.setFechaNacimiento(date1);
-          //  a.setCarrera(c);
+            //  a.setCarrera(c);
 
             //ServicioAlumno sn = new ServicioAlumno();
             //sn.insertarAlumno(a);
@@ -52,9 +52,9 @@ public class Main {
             p.setEmail("hsuhus");
             ServicioProfesor sp = new ServicioProfesor();
             //sp.insertarProfesor(p);
-           // Consejero c = new Consejero();
+            // Consejero c = new Consejero();
             //c.setAlumno(a);
-           // c.setProfesor(p);
+            // c.setProfesor(p);
             //ServicioConsejero sc = new ServicioConsejero();
             //sc.insertarConsejero(c);
             ciclo.setAnnio(2022);
