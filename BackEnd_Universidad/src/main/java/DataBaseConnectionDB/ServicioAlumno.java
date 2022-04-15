@@ -16,14 +16,20 @@ public class ServicioAlumno extends ConnectionDB {
 
     private static final String INSERTAR_ALUMNO = "{call insertaAlumno(?,?,?,?,?,?,?)}";
     private static final String MODIFICAR_ALUMNO = "{call modificaAlumno(?,?,?,?,?,?,?)}";
-
     private static final String CONSULTAR_ALUMNO = "{?=call buscarAlumno(?)}";
     private static final String LISTAR_ALUMNO = "{?=call listarAlumno()}";
     private static final String ELIMINAR_ALUMNO = "{call eliminaAlumno(?)}";
+    private static ServicioAlumno instancia = null;
 
 
-    public ServicioAlumno() {
+    private ServicioAlumno() {
+        super();
     }
+
+    public static ServicioAlumno obtenerInstancia() {
+        return instancia == null ? new ServicioAlumno() : instancia;
+    }
+
 
     public void insertarAlumno(Alumno alumno) throws GlobalException, NoDataException {
         try {

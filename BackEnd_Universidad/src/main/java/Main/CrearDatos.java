@@ -48,7 +48,7 @@ public class CrearDatos {
             //System.out.println(servicio1.buscarCarrera("INGE200").toString());
 
             Alumno a = new Alumno();
-            ServicioAlumno sa = new ServicioAlumno();
+            ServicioAlumno sa = ServicioAlumno.obtenerInstancia();
             a.setCedulaAlumno("702610004");
             a.setNombre("Yendri");
             a.setPrimer_apellido("Masis Brenes");

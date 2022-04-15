@@ -10,6 +10,16 @@ import java.sql.SQLException;
 public class ServicioLogin extends ConnectionDB {
 
     private static final String obtenerLogin = "{?=call obtenerLogin(?)}";
+    private static ServicioLogin instancia = null;
+
+    private ServicioLogin() {
+        super();
+    }
+
+    public static ServicioLogin obtenerInstancia() {
+        return instancia == null ? new ServicioLogin() : instancia;
+    }
+
 
     public Login obtenerLogin(String id) throws GlobalException, NoDataException {
 

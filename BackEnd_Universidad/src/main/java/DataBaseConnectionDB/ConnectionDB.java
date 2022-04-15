@@ -9,30 +9,38 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionDB {
+    //private static ConnectionDB instancia = null;
     protected Connection conexion = null;
 
-    public ConnectionDB() {
+    protected ConnectionDB() {
 
     }
 
+    /*
+        public static ConnectionDB getInstancia() {
+            if (instancia == null) {
+                instancia = new ConnectionDB();
+            }
+            return instancia;
+        }
+    */
     public void conectar() throws SQLException, ClassNotFoundException {
         Class.forName("oracle.jdbc.driver.OracleDriver");
 
         conexion = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "system", "system");
         if (conexion != null) {
-            System.out.println("Me conecté");
+            System.out.println("Conexión a la base de datos Oracle, EXITOSA");
         } else {
-            System.out.println("Estoy mal");
+            System.err.println("Conexión a la base de datos Oracle, FALLIDA");
         }
-
     }
 
     public void desconectar() throws SQLException {
         if (!conexion.isClosed()) {
             conexion.close();
-            System.out.println("Me desconecté");
+            System.out.println("Desconexion de la base de datos Oracle, EXITOSA");
         } else {
-            System.out.println("Estoy mal");
+            System.err.println("Desconexion de la base de datos Oracle, EXITOSA");
         }
     }
 
