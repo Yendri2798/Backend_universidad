@@ -9,6 +9,8 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
+import java.util.List;
+
 
 @Path("/alumno")
 @Produces({MediaType.APPLICATION_JSON})
@@ -51,6 +53,29 @@ public class AlumnoController {
         }
 
         return Response.status(Response.Status.OK).entity("Usuario elimnado").build();
+    }
+
+    @GET
+    @Path("/listarAlumno")
+    public Response listarAlumno() throws NoDataException, GlobalException {
+        List<Alumno> list = alumnoModel.listarAlumno();
+        return Response.status(Response.Status.OK).entity(list).build();
+    }
+
+    @PUT
+    @Path("/modificarAlumno")
+    public Response modificarAlumno(Alumno alumno)  {
+        System.out.println("metodo modificar alumno");
+        try {
+            alumnoModel.modificar(alumno);
+        } catch (NoDataException e) {
+            System.out.println("Error1");
+            e.printStackTrace();
+        } catch (GlobalException e) {
+            System.out.println("Error2");
+            e.printStackTrace();
+        }
+        return Response.ok("Modifica alumno").build();
     }
 
 
